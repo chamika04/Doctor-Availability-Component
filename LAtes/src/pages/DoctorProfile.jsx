@@ -7,7 +7,7 @@ export default function DoctorProfile() {
 
   // Preview doctor data
   const doctor = {
-    name: "Dr. Samantha Perera",
+    name: "Dr. Samadhi Wijethunga",
     specialization: "Cardiology",
     photo: "https://cdn-icons-png.flaticon.com/512/387/387561.png"
   };
