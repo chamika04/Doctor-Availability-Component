@@ -80,6 +80,9 @@ import MealPlan from "../components/nutrition/MealPlan";
 import MealDashboard from "../components/nutrition/MealDashboard";
 import UserForm from "../components/nutrition/UserForm";
 import NutrionistBooking from "../components/nutrition/NutrionistBooking";
+import DoctorProfile from "../pages/DoctorProfile";
+import Appointments from "../pages/Appointments";
+import DoctorManageAdmin from "../pages/DoctorManageAdmin";
 
 const router = createBrowserRouter([
   {
@@ -89,6 +92,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/doctormangeadmin",
+        element: <DoctorManageAdmin />,
+      },
+      {
+        path: "/appointments",
+        element: <Appointments />,
+      },
+      {
+        path: "/doctor/:id",
+        element: <DoctorProfile />
       },
       {
       path:"/doctor-availability",
