@@ -5,9 +5,9 @@ const DoctorManageAdmin = () => {
 
   // Dummy data
   const doctorData = [
-    { id: 1, name: "Dr. Samantha Perera", specialization: "Cardiologist", status: "Active" },
+    { id: 1, name: "Dr. Samadhi Wijethunga", specialization: "Cardiologist", status: "Active" },
     { id: 2, name: "Dr. Nuwan Jayasinghe", specialization: "Dermatologist", status: "Pending" },
-    { id: 3, name: "Dr. Malith Fernando", specialization: "Orthopedic", status: "Active" },
+    { id: 3, name: "Dr. Methsan Herath", specialization: "Orthopedic", status: "Active" },
   ];
 
   const appointmentData = [
