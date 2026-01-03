@@ -13,8 +13,8 @@ const DoctorsAvailability = () => {
     "Dr. Nuwan Jayasinghe",
     "Dr. Malith Fernando",
     "Dr. Kavindi Silva",
-    "Dr. Tharindu Weerasinghe",
-    "Dr. Sachini Madushani"
+    "Dr. Malindri Weerasinghe",
+    "Dr. Samanthi Madushani"
   ];
 
   const generateRandomAvailability = () => {
