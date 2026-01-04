@@ -14,11 +14,11 @@ export default function DoctorProfile() {
 
   // Weekly availability (preview)
   const weeklySchedule = [
-    { day: "Monday", availability: 85 },
-    { day: "Tuesday", availability: 60 },
+    { day: "Monday", availability: 87 },
+    { day: "Tuesday", availability: 61 },
     { day: "Wednesday", availability: 40 },
     { day: "Thursday", availability: 75 },
-    { day: "Friday", availability: 90 },
+    { day: "Friday", availability: 83 },
     { day: "Saturday", availability: 50 },
     { day: "Sunday", availability: 20 },
   ];
