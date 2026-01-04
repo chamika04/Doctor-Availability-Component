@@ -83,6 +83,7 @@ import NutrionistBooking from "../components/nutrition/NutrionistBooking";
 import DoctorProfile from "../pages/DoctorProfile";
 import Appointments from "../pages/Appointments";
 import DoctorManageAdmin from "../pages/DoctorManageAdmin";
+import UserDashboard from "../pages/UserDashboard";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/user-dashboard",
+        element: <UserDashboard />,
       },
       {
         path: "/doctormangeadmin",
