@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 const UserDashboard = () => {
   const navigate = useNavigate();
-
   const [language, setLanguage] = useState("si"); // default Sinhala
 
   const text = {
@@ -53,6 +52,12 @@ const UserDashboard = () => {
 
   const t = text[language];
 
+  // Sample doctor availability
+  const doctors = [
+    { name: "Dr. Perera", specialty: "General OPD", time: "8.00 AM – 12.00 PM", availability: 85 },
+    { name: "Dr. Silva", specialty: "Medical Clinic", time: "9.00 AM – 1.00 PM", availability: 60 },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 p-6">
 
@@ -86,28 +91,66 @@ const UserDashboard = () => {
             </h2>
 
             <div className="grid grid-cols-3 gap-4 text-center">
-              <div className="p-4 bg-red-50 rounded-lg">
-                🦠
+              <div className="p-4 bg-red-50 rounded-lg hover:scale-105 transition-transform cursor-pointer">
+                <img
+                  src="https://img.icons8.com/emoji/48/000000/mask-emoji.png"
+                  alt="mask"
+                  className="mx-auto"
+                />
                 <p className="mt-2">{t.wearMask}</p>
               </div>
-              <div className="p-4 bg-blue-50 rounded-lg">
-                🧼
+              <div className="p-4 bg-blue-50 rounded-lg hover:scale-105 transition-transform cursor-pointer">
+                <img
+                  src="https://img.icons8.com/fluency/48/000000/hand-wash.png"
+                  alt="wash hands"
+                  className="mx-auto"
+                />
                 <p className="mt-2">{t.washHands}</p>
               </div>
-              <div className="p-4 bg-yellow-50 rounded-lg">
-                🤒
+              <div className="p-4 bg-yellow-50 rounded-lg hover:scale-105 transition-transform cursor-pointer">
+                <img
+                  src="https://img.icons8.com/emoji/48/000000/face-with-thermometer.png"
+                  alt="fever"
+                  className="mx-auto"
+                />
                 <p className="mt-2">{t.fever}</p>
               </div>
             </div>
           </div>
 
-          {/* OPD Status */}
+          {/* OPD Status with progress bars */}
           <div className="bg-white rounded-xl shadow-md p-6">
             <h2 className="text-xl font-semibold mb-4">🏥 OPD Status</h2>
-            <div className="flex gap-6 text-lg">
-              <span>🟢 OPD Open</span>
-              <span>🟡 High Crowd</span>
-              <span>🔴 Clinic Closed</span>
+            <div className="space-y-4">
+              <div>
+                <p>🟢 Open</p>
+                <div className="w-full bg-gray-200 h-4 rounded">
+                  <div
+                    className="bg-green-500 h-4 rounded transition-all duration-500"
+                    style={{ width: "70%" }}
+                  ></div>
+                </div>
+              </div>
+
+              <div>
+                <p>🟡 High Crowd</p>
+                <div className="w-full bg-gray-200 h-4 rounded">
+                  <div
+                    className="bg-yellow-400 h-4 rounded transition-all duration-500"
+                    style={{ width: "20%" }}
+                  ></div>
+                </div>
+              </div>
+
+              <div>
+                <p>🔴 Closed</p>
+                <div className="w-full bg-gray-200 h-4 rounded">
+                  <div
+                    className="bg-red-500 h-4 rounded transition-all duration-500"
+                    style={{ width: "10%" }}
+                  ></div>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -123,22 +166,55 @@ const UserDashboard = () => {
             </h2>
 
             <div className="space-y-3">
-              <div className="p-3 bg-green-50 rounded">
-                🟢 Dr. Perera <br />
-                General OPD <br />
-                ⏰ 8.00 AM – 12.00 PM
-              </div>
-
-              <div className="p-3 bg-green-50 rounded">
-                🟢 Dr. Silva <br />
-                Medical Clinic <br />
-                ⏰ 9.00 AM – 1.00 PM
-              </div>
+              {doctors.map((doc, idx) => (
+                <div
+                  key={idx}
+                  className="p-3 bg-green-50 rounded flex justify-between items-center hover:bg-green-100 transition-colors"
+                >
+                  <div>
+                    <span className="font-medium">{doc.name}</span> <br />
+                    {doc.specialty} <br />
+                    ⏰ {doc.time}
+                  </div>
+                  <div className="w-12 h-12 relative">
+                    <svg viewBox="0 0 36 36" className="w-12 h-12">
+                      <circle
+                        className="text-gray-200"
+                        cx="18"
+                        cy="18"
+                        r="15.9155"
+                        fill="none"
+                        stroke="#E5E7EB"
+                        strokeWidth="3"
+                      />
+                      <circle
+                        className="text-green-500"
+                        cx="18"
+                        cy="18"
+                        r="15.9155"
+                        fill="none"
+                        stroke="#10B981"
+                        strokeWidth="3"
+                        strokeDasharray={`${doc.availability}, 100`}
+                        strokeDashoffset="25"
+                      />
+                      <text
+                        x="18"
+                        y="20"
+                        className="text-xs font-bold text-gray-700"
+                        textAnchor="middle"
+                      >
+                        {doc.availability}%
+                      </text>
+                    </svg>
+                  </div>
+                </div>
+              ))}
             </div>
 
             <button
               onClick={() => navigate("/doctor-availability")}
-              className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+              className="w-full mt-4 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"
             >
               🩺 {t.checkAvailability}
             </button>
